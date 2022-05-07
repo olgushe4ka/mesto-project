@@ -1,0 +1,31 @@
+.edit-form__save-button {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: black;
+  margin-left: 36px;
+  width: 358px;
+  border-radius: 2px;
+  height: 50px;
+  margin-bottom: 37px;
+  transition: opacity .5s linear 0s;
+}
+
+.edit-form__save-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 879px) {
+  .edit-form__save-button {
+    margin-left: 22px;
+    width: 238px;
+    height: 46px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

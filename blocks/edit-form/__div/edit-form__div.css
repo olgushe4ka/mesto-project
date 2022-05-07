@@ -1,0 +1,23 @@
+.edit-form__div {
+  background: #FFFFFF;
+  color: black;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 430px;
+  height: 330px;
+  margin: auto;
+  justify-content: space-between;
+  flex-flow: column;
+  display: flex;
+  position: fixed;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -25%);
+}
+
+@media screen and (max-width: 879px) {
+  .edit-form__div {
+    width: 282px;
+    height: 322px;
+  }
+}
