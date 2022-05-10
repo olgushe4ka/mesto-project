@@ -11,72 +11,60 @@
 <body class="page">
   <header class="header">
     <img class="header__logo" src="images/Logo.svg" alt="Логотип">
-    <div class="header__line"></div>
   </header>
   <main class="content">
     <section class="profile">
       <img src="images/ava.jpg" alt="Фото" class="profile__avatar">
       <div class="profile__info">
         <div class="profile__name-div">
-          <p class="profile__name">Жак-Ив Кусто</p>
-          <button class="profile__edit-button"></button>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="submit" aria-label="edit"></button>
         </div>
         <p class="profile__position">Исследователь океана</p>
       </div>
-      <button class="profile__plus-button"></button>
-    </section>
-    <section class="edit-form">
-      <div class="edit-form__backround">
-        <div class="edit-form__div">
-          <button class="edit-form__close-icon"></button>
-          <p class="edit-form__title">Редактировать профиль</p>
-          <input type="name" class="edit-form__field" placeholder="Жак-Ив Кусто">
-          <input type="name" class="edit-form__field" placeholder="Исследователь океана">
-          <button class="edit-form__save-button">Сохранить</button>
-        </div>
-      </div>
+      <button class="profile__plus-button" type="submit" aria-label="plus"></button>
     </section>
     <section class="photo-grid">
       <div class="photo-grid__item">
         <img src="images/karachaevsk.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
         <div class="photo-grid__box-name">
-          <p class="photo-grid__name">Карачаевск</p>
-          <button class="photo-grid__heart"></button>
+          <h2 class="photo-grid__name">Карачаевск</h2>
+          <button class="photo-grid__heart" type="submit" aria-label="like"></button>
         </div>
       </div>
       <div class="photo-grid__item">
         <img src="images/elbrus.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
         <div class="photo-grid__box-name">
-          <p class="photo-grid__name">Гора Эльбрус</p>
-          <button class="photo-grid__heart"></button>
+          <h2 class="photo-grid__name">Гора Эльбрус</h2>
+          <button class="photo-grid__heart" type="submit" aria-label="like"></button>
         </div>
       </div>
       <div class="photo-grid__item">
         <img src="images/donbai.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
         <div class="photo-grid__box-name">
-          <p class="photo-grid__name">Домбай</p>
-          <button class="photo-grid__heart"></button>
+          <h2 class="photo-grid__name">Домбай</h2>
+          <button class="photo-grid__heart" type="submit" aria-label="like"></button>
         </div>
       </div>
       <div class="photo-grid__item">
         <img src="images/elbrus.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
         <div class="photo-grid__box-name">
-          <p class="photo-grid__name">Гора Эльбрус</p>
-          <button class="photo-grid__heart"></button>
+          <h2 class="photo-grid__name">Гора Эльбрус</h2>
+          <button class="photo-grid__heart" type="submit" aria-label="like"></button>
         </div>
       </div>
       <div class="photo-grid__item">
         <img src="images/donbai.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
         <div class="photo-grid__box-name">
-          <p class="photo-grid__name">Домбай</p>
-          <button class="photo-grid__heart"></button>
+          <h2 class="photo-grid__name">Домбай</h2>
+          <button class="photo-grid__heart" type="submit" aria-label="like"></button>
         </div>
       </div>
       <div class="photo-grid__item">
         <img src="images/karachaevsk.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
         <div class="photo-grid__box-name">
-          <p class="photo-grid__name">Карачаево-Черкессия</p>
-          <button class="photo-grid__heart"></button>
+          <h2 class="photo-grid__name">Карачаево-Черкессия</h2>
+          <button class="photo-grid__heart" type="submit" aria-label="like"></button>
         </div>
       </div>
     </section>
@@ -84,6 +72,16 @@
   <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
+  <div class="popup">
+    <form class="edit-form">
+      <button class="edit-form__close-icon" aria-label="close"></button>
+      <h2 class="edit-form__title">Редактировать профиль</h2>
+      <input type="text" class="edit-form__field" name="name" placeholder="Жак-Ив Кусто">
+      <input type="text" class="edit-form__field" name="position" placeholder="Исследователь океана">
+      <button class="edit-form__save-button" type="submit">Сохранить</button>
+    </form>
+  </div>
+
 </body>
 
 </html>

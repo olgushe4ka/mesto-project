@@ -12,6 +12,7 @@
 
 .photo-grid__heart:hover {
   opacity: 0.5;
+  cursor: url(../../images/pointer.svg), pointer;
 }
 
 .photo-grid__heart:active {

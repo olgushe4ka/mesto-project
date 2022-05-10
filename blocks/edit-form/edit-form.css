@@ -1,3 +1,18 @@
 .edit-form {
-  display: none;
+  background: #FFFFFF;
+  color: black;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 430px;
+  margin: auto;
+  flex-flow: column;
+  display: flex;
+  position: relative;
+}
+
+@media screen and (max-width: 879px) {
+  .edit-form {
+    width: 282px;
+    height: 322px;
+  }
 }

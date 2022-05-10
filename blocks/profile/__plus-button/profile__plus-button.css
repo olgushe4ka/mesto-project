@@ -11,7 +11,7 @@
   background-image: url(../../../images/Znak-plus.svg);
   color: black;
   background-size: 22px;
-  background-color: black;
+  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   transition: opacity .5s linear 0s;
@@ -19,13 +19,13 @@
 
 .profile__plus-button:hover {
   opacity: .6;
+  cursor: url(../../images/pointer.svg), pointer;
 }
 
 @media screen and (max-width: 879px) {
   .profile__plus-button {
     margin-top: 36px;
     width: 282px;
-    height: 50px;
     background-size: 16px;
   }
 }
