@@ -26,12 +26,12 @@
 @import url(../blocks/photo-grid/__heart/photo-grid__heart.css);
 
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/footer/__links/footer__links.css);
-@import url(../blocks/footer/__link/footer__link.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__close-icon/popup__close-icon.css);
 
 @import url(../blocks//edit-form/edit-form.css);
 @import url(../blocks/edit-form/__close-icon/edit-form__close-icon.css);
