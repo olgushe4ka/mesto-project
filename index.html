@@ -25,66 +25,53 @@
       <button class="profile__plus-button" type="button" aria-label="плюс"></button>
     </section>
     <section class="photo-grid">
-      <div class="photo-grid__item">
-        <img src="images/karachaevsk.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
-        <div class="photo-grid__box-name">
-          <h2 class="photo-grid__name">Карачаевск</h2>
-          <button class="photo-grid__heart" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img src="images/elbrus.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
-        <div class="photo-grid__box-name">
-          <h2 class="photo-grid__name">Гора Эльбрус</h2>
-          <button class="photo-grid__heart" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img src="images/donbai.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
-        <div class="photo-grid__box-name">
-          <h2 class="photo-grid__name">Домбай</h2>
-          <button class="photo-grid__heart" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img src="images/elbrus.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
-        <div class="photo-grid__box-name">
-          <h2 class="photo-grid__name">Гора Эльбрус</h2>
-          <button class="photo-grid__heart" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img src="images/donbai.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
-        <div class="photo-grid__box-name">
-          <h2 class="photo-grid__name">Домбай</h2>
-          <button class="photo-grid__heart" type="button" aria-label="like"></button>
-        </div>
-      </div>
-      <div class="photo-grid__item">
-        <img src="images/karachaevsk.jpg" alt="Красивый пейзаж" class="photo-grid__photo">
-        <div class="photo-grid__box-name">
-          <h2 class="photo-grid__name">Карачаево-Черкессия</h2>
-          <button class="photo-grid__heart" type="button" aria-label="like"></button>
-        </div>
-      </div>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup-profile">
     <div class="popup__container">
       <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
       <form class="edit-form">
         <h2 class="edit-form__title">Редактировать профиль</h2>
-        <input type="text" class="edit-form__field" name="name" placeholder="Жак-Ив Кусто">
-        <input type="text" class="edit-form__field" name="position" placeholder="Исследователь океана">
-        <button class="edit-form__save-button" type="submit">Сохранить</button>
+        <input type="text" class="edit-form__field edit-form__field_name" name="name" placeholder="Жак-Ив Кусто"
+          value="Жак-Ив Кусто">
+        <input type="text" class="edit-form__field edit-form__field_position" name="position"
+          placeholder="Исследователь океана" value="Исследователь океана">
+        <button class="edit-form__button edit-form__save-button" type="button">Сохранить</button>
       </form>
     </div>
   </div>
+  <div class="popup popup-edit">
+    <div class="popup__container">
+      <button class="popup__close-icon edit-popup__close-icon" type="button" aria-label="закрыть"></button>
+      <form class="edit-form">
+        <h2 class="edit-form__title">Новое место</h2>
+        <input type="text" class="edit-form__field edit-form__field_title" name="title" placeholder="Название">
+        <input type="text" class="edit-form__field edit-form__field_link" name="link" placeholder="Ссылка на картинку">
+        <button class="edit-form__button edit-form__create-button" type="button">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup-photo">
+    <div class="popup__container popup__container_theme_black">
+      <button class="popup__close-icon photo-popup__close-icon" type="button" aria-label="закрыть"></button>
+      <img src="images/karachaevsk.jpg" class="popup-photo__photo" alt="картинка">
+      <h2 class="popup-photo__title">Красотища</h2>
+    </div>
+  </div>
+  <template id="photo-grid">
+    <div class="photo-grid__item">
+      <button class="photo-grid__delite-button" type="button" aria-label="мусорное ведро"></button>
+      <img src="images/karachaevsk.jpg" class="photo-grid__photo">
+      <div class="photo-grid__box-name">
+        <h2 class="photo-grid__name">Карачаевск</h2>
+        <button class="photo-grid__heart" type="button" aria-label="like"></button>
+      </div>
+    </div>
+  </template>
   <script src="./script.js"></script>
 </body>
 
 </html>
-

@@ -15,7 +15,13 @@
   cursor: url(../../images/pointer.svg), pointer;
 }
 
-.photo-grid__heart:active {
+.photo-grid__heart_black {
   background-image: url(../../../images/znak-heart-black.svg);
   opacity: 1;
 }
+
+/*
+.photo-grid__heart:active {
+  background-image: url(../../../images/znak-heart-black.svg);
+  opacity: 1;
+} */
