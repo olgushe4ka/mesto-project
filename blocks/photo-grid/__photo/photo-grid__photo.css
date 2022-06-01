@@ -6,5 +6,5 @@
 
 .photo-grid__photo:hover {
   opacity: 0.5;
-  cursor: url(../../images/pointer.svg), pointer;
+  cursor: url(../../../images/pointer.svg), pointer;
 }
