@@ -1,4 +1,5 @@
 .edit-form__field {
+  outline:none;
   margin: 0;
   padding: 0;
   margin-left: 36px;

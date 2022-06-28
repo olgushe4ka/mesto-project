@@ -4,17 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="images/Logo.svg" alt="Логотип">
+    <img class="header__logo" src="<%=require('./images/Logo.svg')%>" alt="Логотип">
   </header>
   <main class="content">
     <section class="profile">
-      <img src="images/ava.jpg" alt="Фото" class="profile__avatar">
+      <img src="<%=require('./images/ava.jpg')%>" alt="Фото" class="profile__avatar">
       <div class="profile__info">
         <div class="profile__name-div">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -33,24 +32,40 @@
   <div class="popup popup-profile">
     <div class="popup__container">
       <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="edit-form">
-        <h2 class="edit-form__title">Редактировать профиль</h2>
-        <input type="text" class="edit-form__field edit-form__field_name" name="name" placeholder="Жак-Ив Кусто"
-          value="Жак-Ив Кусто">
-        <input type="text" class="edit-form__field edit-form__field_position" name="position"
-          placeholder="Исследователь океана" value="Исследователь океана">
-        <button class="edit-form__button edit-form__save-button" type="button">Сохранить</button>
+      <form class="form edit-form" novalidate>
+        <fieldset class="form__set">
+          <h2 class="edit-form__title">Редактировать профиль</h2>
+          <input id="name-input" type="text" class="form__input edit-form__field edit-form__field_name" name="name"
+            placeholder="Жак-Ив Кусто" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
+          <span class="form__input-error name-input-error"></span>
+
+          <input id="position-input" type="text" class="form__input edit-form__field edit-form__field_position"
+            name="position" placeholder="Исследователь океана" value="Исследователь океана" maxlength="200"
+            minlength="2" required>
+          <span class="form__input-error position-input-error"></span>
+          <button class="form__submit edit-form__button edit-form__save-button" type="button">Сохранить</button>
+        </fieldset>
       </form>
     </div>
   </div>
   <div class="popup popup-edit">
     <div class="popup__container">
       <button class="popup__close-icon edit-popup__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="edit-form">
-        <h2 class="edit-form__title">Новое место</h2>
-        <input type="text" class="edit-form__field edit-form__field_title" name="title" placeholder="Название">
-        <input type="text" class="edit-form__field edit-form__field_link" name="link" placeholder="Ссылка на картинку">
-        <button class="edit-form__button edit-form__create-button" type="button">Создать</button>
+      <form class="form edit-form" novalidate>
+        <fieldset class="form__set">
+          <h2 class="edit-form__title">Новое место</h2>
+          <input id="title-input" type="text" class="form__input edit-form__field edit-form__field_title" name="title"
+            placeholder="Название" maxlength="30" minlength="2" required>
+
+          <span class="form__input-error title-input-error"></span>
+
+          <input id="link-input" type="url" class="form__input edit-form__field edit-form__field_link" name="link"
+            placeholder="Ссылка на картинку" required>
+
+          <span class="form__input-error link-input-error"></span>
+
+          <button class="form__submit edit-form__button edit-form__create-button button" type="button">Создать</button>
+        </fieldset>
       </form>
     </div>
   </div>
@@ -71,8 +86,5 @@
       </div>
     </div>
   </template>
-  <script src="scripts/cards.js"></script>
-  <script src="scripts/index.js"></script>
- </body>
-
-</html>
+  <script type="module" src="index.js"></script>
+</body>
