@@ -21,7 +21,7 @@
         </div>
         <p class="profile__position">Исследователь океана</p>
       </div>
-      <button class="profile__plus-button" type="button" aria-label="плюс"></button>
+      <button class="profile__plus-button" type="submit" aria-label="плюс"></button>
     </section>
     <section class="photo-grid">
     </section>
@@ -32,18 +32,18 @@
   <div class="popup popup-profile">
     <div class="popup__container">
       <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="form edit-form" novalidate>
+      <form class="form edit-form profile-form" novalidate>
         <fieldset class="form__set">
           <h2 class="edit-form__title">Редактировать профиль</h2>
           <input id="name-input" type="text" class="form__input edit-form__field edit-form__field_name" name="name"
-            placeholder="Жак-Ив Кусто" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
+            placeholder="Имя" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
           <span class="form__input-error name-input-error"></span>
 
           <input id="position-input" type="text" class="form__input edit-form__field edit-form__field_position"
-            name="position" placeholder="Исследователь океана" value="Исследователь океана" maxlength="200"
+            name="position" placeholder="Должность" value="Исследователь океана" maxlength="200"
             minlength="2" required>
           <span class="form__input-error position-input-error"></span>
-          <button class="form__submit edit-form__button edit-form__save-button" type="button">Сохранить</button>
+          <button class="form__submit edit-form__button edit-form__save-button" type="submit">Сохранить</button>
         </fieldset>
       </form>
     </div>
@@ -51,7 +51,7 @@
   <div class="popup popup-edit">
     <div class="popup__container">
       <button class="popup__close-icon edit-popup__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="form edit-form" novalidate>
+      <form class="form edit-form card-form" novalidate>
         <fieldset class="form__set">
           <h2 class="edit-form__title">Новое место</h2>
           <input id="title-input" type="text" class="form__input edit-form__field edit-form__field_title" name="title"
@@ -64,7 +64,7 @@
 
           <span class="form__input-error link-input-error"></span>
 
-          <button class="form__submit edit-form__button edit-form__create-button button" type="button">Создать</button>
+          <button class="form__submit edit-form__button edit-form__create-button button" type="submit">Создать</button>
         </fieldset>
       </form>
     </div>
@@ -86,5 +86,5 @@
       </div>
     </div>
   </template>
-  <script type="module" src="index.js"></script>
+   <!-- <script type="module" src="scripts/index.js"></script> -->
 </body>

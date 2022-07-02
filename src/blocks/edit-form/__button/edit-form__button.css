@@ -21,7 +21,7 @@
 
 .edit-form__button:hover {
   opacity: 0.8;
-  cursor: url(../../../images/pointer.svg), pointer;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 879px) {

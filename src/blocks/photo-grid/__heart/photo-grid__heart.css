@@ -12,16 +12,10 @@
 
 .photo-grid__heart:hover {
   opacity: 0.5;
-  cursor: url(../../../images/pointer.svg), pointer;
+  cursor: pointer;
 }
 
 .photo-grid__heart_black {
   background-image: url(../../../images/znak-heart-black.svg);
   opacity: 1;
 }
-
-/*
-.photo-grid__heart:active {
-  background-image: url(../../../images/znak-heart-black.svg);
-  opacity: 1;
-} */
