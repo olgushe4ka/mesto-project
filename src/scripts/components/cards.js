@@ -1,11 +1,16 @@
 //Добавление фото
 
 import { openPopup } from '../components/modal.js';
-import { photoPopup} from '../components/constants.js';
+import { photoPopup } from '../components/constants.js';
 
 function like(evt) {
   evt.target.classList.toggle('photo-grid__heart_black');
 };
+
+function removeItem(evt) {
+  evt.target.parentElement.remove();
+};
+
 
 export function renderCard(imageName, imageLink, imageAlt) {
   const photoTemplate = document.querySelector('#photo-grid').content;
@@ -15,15 +20,11 @@ export function renderCard(imageName, imageLink, imageAlt) {
 
   photoItem.querySelector('.photo-grid__photo').src = imageLink;
   photoItem.querySelector('.photo-grid__name').textContent = imageName;
-  photoItem.querySelector('.photo-grid__name').alt = imageAlt;
-
+  photoItem.querySelector('.photo-grid__photo').alt = imageAlt;
 
   photoItem.querySelector('.photo-grid__heart').addEventListener('click', like);
 
-  photoItem.querySelector('.photo-grid__delite-button').addEventListener('click', function () {
-    photoItem.remove();
-  });
-
+  photoItem.querySelector('.photo-grid__delite-button').addEventListener('click', removeItem);
 
   photoElement.addEventListener('click', function () {
 

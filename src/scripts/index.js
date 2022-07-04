@@ -1,4 +1,8 @@
 import '../pages/index.css';
+import { addCard, renderCard } from './components/cards.js';
+import { linkInput, nameInput, gridCreateButton } from './components/constants.js';
+import { closePopup, openPopup } from './components/modal.js';
+import { enableValidation } from './components/validate.js';
 
 const initialCards = [
   {
@@ -31,7 +35,6 @@ const initialCards = [
 
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-profile');
-const popups = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup-edit');
 const buttonCloseProfile = document.querySelector('.popup__close-icon');
 const buttonAddCard = document.querySelector('.profile__plus-button');
@@ -44,6 +47,7 @@ const nameProfile = document.querySelector('.profile__name');
 const photoPopup = document.querySelector('.popup-photo');
 const cardForm = document.querySelector('.card-form');
 const profileForm = document.querySelector('.profile-form');
+const popups = document.querySelectorAll('.popup');
 
 
 
@@ -58,13 +62,7 @@ function openPopupProfile() {
 }
 buttonEditProfile.addEventListener('click', openPopupProfile);
 
-import { openPopup } from './components/modal.js';
-import { closePopup } from './components/modal.js';
-import { closeByEsc } from './components/modal.js';
 
-
-//Закрытие попавпов
-document.addEventListener('keydown', closeByEsc);
 
 
 
@@ -89,12 +87,6 @@ popupPhotoCloseButton.addEventListener('click', function () {
 
 
 //Добавление фото
-import { nameInput } from './components/constants.js';
-import { linkInput } from './components/constants.js';
-import { gridCreateButton } from './components/constants.js';
-import { renderCard } from './components/cards.js';
-import { addCard } from './components/cards.js';
-
 
 initialCards.forEach((item) => {
   const cards = document.querySelector('.photo-grid');
@@ -113,7 +105,7 @@ cardForm.addEventListener('submit', function () {
   cards.prepend(card);
 
   closePopup(popupEdit);
-  //При сабмите формы добавления карточки также необходимо деактивировать кнопку сабмита, иначе после добавления карточки и последующего повторного открытия формы - кнопка активна - в результате чего есть возможность сделать сабмит с пустыми невалидными полями
+  gridCreateButton.disabled = true;
 });
 
 
@@ -122,12 +114,6 @@ cardForm.addEventListener('submit', function () {
 // Изменение профайла
 
 const profileSaveButton = document.querySelector('.edit-form__save-button');
-
-// const namePopupEdit = document.querySelector('.edit-form__field_name');
-// const positionPopupEdit = document.querySelector('.edit-form__field_position');
-// const positionProfile = document.querySelector('.profile__position');
-// const nameProfile = document.querySelector('.profile__name');
-// const popupProfile = document.querySelector('.popup-profile');
 
 function changeProfile(nameValue, positionValue) {
   nameProfile.textContent = nameValue;
@@ -148,8 +134,6 @@ profileForm.addEventListener('submit', function () {
 
 
 //валидация форм
-import { enableValidation } from './components/validate.js';
-
 enableValidation({
   inputErrorClass: 'form__input_type_error',
   errorClass: 'form__input-error_active',
@@ -161,6 +145,7 @@ enableValidation({
 });
 
 
+
 //закрытие попапов при щелке мимо него
 popups.forEach(popup => {
   popup.addEventListener('mousedown', evt => {
@@ -168,4 +153,20 @@ popups.forEach(popup => {
       closePopup(evt.target.closest('.popup'))
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
