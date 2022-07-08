@@ -16,7 +16,7 @@ export function getCards() {
 }
 
 export function patchProfileInfo(name, about) {
-  fetch('https://nomoreparties.co/v1/plus-cohort-13/users/me', {
+  return fetch('https://nomoreparties.co/v1/plus-cohort-13/users/me', {
     method: 'PATCH',
     headers: {
       authorization: 'cec4068b-d318-4572-975e-c977f41c2ea2',

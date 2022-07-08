@@ -80,6 +80,8 @@ getCards().then((res) => {
 
 cardForm.addEventListener('submit', function () {
 
+  renderLoading(true, cardForm);
+
   postCards(nameInput.value, linkInput.value)
     .then((res) => {
       if (res.ok) {
@@ -88,18 +90,18 @@ cardForm.addEventListener('submit', function () {
       return Promise.reject(`Ошибка: ${res.status}`);
     })
     .then(createdCard => {
-      addCard(createdCard, cardsContainer, true);
-
-      nameInput.value = '';
-      linkInput.value = '';
-
-      closePopup(popupEdit);
-
-      gridCreateButton.disabled = true;
+      addCard(createdCard, cardsContainer, true)
+    })
+    .finally(() => {
+      renderLoading(false, cardForm);
     });
 
+  nameInput.value = '';
+  linkInput.value = '';
 
+  closePopup(popupEdit);
 
+  gridCreateButton.disabled = true;
 });
 
 
@@ -127,15 +129,14 @@ function changeProfile(nameValue, positionValue) {
 
 profileForm.addEventListener('submit', function () {
 
+  renderLoading(true, profileForm);
+
   changeProfile(namePopupEdit.value, positionPopupEdit.value);
-  patchProfileInfo(namePopupEdit.value, positionPopupEdit.value);
-
-  namePopupEdit.value = '';
-  positionPopupEdit.value = '';
-
-  closePopup(popupProfile);
-
-  profileSaveButton.disabled = true;
+  patchProfileInfo(namePopupEdit.value, positionPopupEdit.value)
+    .finally(() => {
+      closePopup(popupProfile);
+      renderLoading(false, profileForm);
+    });
 
 });
 
@@ -145,14 +146,17 @@ function changeAvatar(imageValue) {
 }
 
 avatarForm.addEventListener('submit', function () {
+  renderLoading(true, avatarForm);
+
   changeAvatar(avatarFormInput.value);
-  patchAvatar(avatarFormInput.value);
+  patchAvatar(avatarFormInput.value)
+  .finally(() => {
+    closePopup(popupAvatarEdit);
+    avatarFormInput.value = '';
+     renderLoading(false, avatarForm);
+  });
 
-  avatarFormInput.value = '';
-
-  closePopup(popupAvatarEdit);
-
-  avaSaveButton.disabled = true;
+ avaSaveButton.disabled = true;
 });
 
 
@@ -176,3 +180,13 @@ popups.forEach(popup => {
   });
 });
 
+
+function renderLoading(isLoading, place) {
+
+  if (isLoading) {
+    place.querySelector('.form__submit').textContent = 'Сохранение...';
+  }
+  else {
+    place.querySelector('.form__submit').textContent = 'Сохранить';
+  }
+}
