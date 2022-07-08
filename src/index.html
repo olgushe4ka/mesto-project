@@ -13,13 +13,14 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img src="<%=require('./images/ava.jpg')%>" alt="Фото" class="profile__avatar">
+      <a class="profile__avatar-box">
+        <img src="" alt="Фото" class="profile__avatar"></a>
       <div class="profile__info">
         <div class="profile__name-div">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
         </div>
-        <p class="profile__position">Исследователь океана</p>
+        <p class="profile__position"></p>
       </div>
       <button class="profile__plus-button" type="submit" aria-label="плюс"></button>
     </section>
@@ -38,7 +39,6 @@
           <input id="name-input" type="text" class="form__input edit-form__field edit-form__field_name" name="name"
             placeholder="Имя" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
           <span class="form__input-error name-input-error"></span>
-
           <input id="position-input" type="text" class="form__input edit-form__field edit-form__field_position"
             name="position" placeholder="Должность" value="Исследователь океана" maxlength="200" minlength="2" required>
           <span class="form__input-error position-input-error"></span>
@@ -71,13 +71,31 @@
       <h2 class="popup-photo__title">Красотища</h2>
     </div>
   </div>
+
+  <div class="popup popup-avatar-edit">
+    <div class="popup__container">
+      <button class="popup__close-icon popup__close-icon-ava" type="button" aria-label="закрыть"></button>
+      <form class="form edit-form profile-form avatar-form" novalidate>
+        <fieldset class="form__set">
+          <h2 class="edit-form__title">Обновить аватар</h2>
+          <input id="link-input" type="url" class="form__input edit-form__field edit-form__field_link avatar-form__field_link" name="link"
+            placeholder="Ссылка на картинку" required>
+          <span class="form__input-error link-input-error"></span>
+          <button class="form__submit edit-form__button edit-form__save-button-ava" type="submit">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
   <template id="photo-grid">
     <div class="photo-grid__item">
       <button class="photo-grid__delite-button" type="button" aria-label="мусорное ведро"></button>
       <img src="images/karachaevsk.jpg" class="photo-grid__photo" alt="описание картинки">
       <div class="photo-grid__box-name">
         <h2 class="photo-grid__name">Карачаевск</h2>
-        <button class="photo-grid__heart" type="button" aria-label="like"></button>
+        <div class="photo-grid__like-and-counter-box"><button class="photo-grid__heart" type="button"
+            aria-label="like"></button>
+          <span class="photo-grid__counter">1</span>
+        </div>
       </div>
     </div>
   </template>

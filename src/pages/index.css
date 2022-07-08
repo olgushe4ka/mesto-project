@@ -10,6 +10,7 @@
 @import url(../blocks/content/content.css);
 
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar-box/profile__avatar-box.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name-div/profile__name-div.css);
@@ -24,7 +25,9 @@
 @import url(../blocks/photo-grid/__photo/photo-grid__photo.css);
 @import url(../blocks/photo-grid/__box-name/photo-grid__box-name.css);
 @import url(../blocks/photo-grid/__name/photo-grid__name.css);
+@import url(../blocks/photo-grid/__like-and-counter-box/photo-grid__like-and-counter-box.css);
 @import url(../blocks/photo-grid/__heart/photo-grid__heart.css);
+@import url(../blocks/photo-grid/__counter/photo-grid__counter.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

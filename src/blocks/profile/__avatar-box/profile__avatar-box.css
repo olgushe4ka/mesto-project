@@ -1,0 +1,21 @@
+.profile__avatar-box {
+  position: relative;
+}
+
+.profile__avatar-box::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+.profile__avatar-box:hover:before {
+  background: rgba(0, 0, 0, .8);
+  background-image: url(/src/images/edit-profile-icon.png);
+  background-size: 26px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity .5s linear 0s;
+  cursor: pointer;
+}
