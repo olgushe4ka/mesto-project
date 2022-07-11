@@ -53,6 +53,8 @@ const avatarCloseIcon = document.querySelector('.popup__close-icon-ava');
 
 //открытие, закрытие попапов
 buttonEditProfile.addEventListener('click', function () {
+  namePopupEdit.value = nameProfile.textContent;
+  positionPopupEdit.value = nameProfile.textContent;
   openPopup(popupProfile);
 });
 
@@ -91,19 +93,21 @@ cardForm.addEventListener('submit', function () {
   postCards(nameInput.value, linkInput.value)
     .then(checkResponse)
     .then(createdCard => {
-      addCard(createdCard, cardsContainer, true)
+      addCard(createdCard, cardsContainer, true);
+      closePopup(popupEdit);
+
+      nameInput.value = '';
+      linkInput.value = '';
+
+      gridCreateButton.classList.add('button_inactive');
+      gridCreateButton.disabled = true;
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       renderLoading(false, cardForm);
-      closePopup(popupEdit);
-      nameInput.value = '';
-      linkInput.value = '';
 
-      gridCreateButton.classList.add('button_inactive');
-      gridCreateButton.disabled = true;
     });
 });
 
@@ -129,16 +133,18 @@ profileForm.addEventListener('submit', function () {
 
   renderLoading(true, profileForm);
 
-  changeProfile(namePopupEdit.value, positionPopupEdit.value);
   patchProfileInfo(namePopupEdit.value, positionPopupEdit.value)
+    .then(checkResponse)
+    .then(() => {
+      changeProfile(namePopupEdit.value, positionPopupEdit.value);
+      closePopup(popupProfile);
+    })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      closePopup(popupProfile);
       renderLoading(false, profileForm);
     });
-
 });
 
 //изменение аватара
@@ -151,11 +157,11 @@ avatarForm.addEventListener('submit', function () {
 
   changeAvatar(avatarFormInput.value);
   patchAvatar(avatarFormInput.value)
+    .then(() => { closePopup(popupAvatarEdit); })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      closePopup(popupAvatarEdit);
       avatarFormInput.value = '';
       renderLoading(false, avatarForm);
     });

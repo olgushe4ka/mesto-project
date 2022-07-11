@@ -12,7 +12,10 @@ function like(evt, cardId) {
     .then(checkResponse)
     .then(card => {
       evt.target.parentElement.querySelector('.photo-grid__counter').textContent = card.likes.length;
-      evt.target.classList.toggle('photo-grid__heart_black');
+      evt.target.classList.toggle('photo-grid__heart_black')
+    })
+    .catch((err) => {
+      console.log(err);
     });
 }
 
@@ -46,13 +49,17 @@ export function renderCard(imageName, imageLink, imageLike, hideDeleteButton, im
       deleteCard(imageId)
         .then(checkResponse)
         .then(removeParentItem(event))
-    });
+        .catch((err) => {
+          console.log(err)
+        });
+    })
   }
 
   photoElement.addEventListener('click', function () {
 
     popupPhotoInput.src = imageLink;
     popupTitleInput.textContent = imageName;
+    popupPhotoInput.alt = imageName;
 
     openPopup(photoPopup);
 
