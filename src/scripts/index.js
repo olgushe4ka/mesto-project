@@ -54,7 +54,7 @@ const avatarCloseIcon = document.querySelector('.popup__close-icon-ava');
 //открытие, закрытие попапов
 buttonEditProfile.addEventListener('click', function () {
   namePopupEdit.value = nameProfile.textContent;
-  positionPopupEdit.value = nameProfile.textContent;
+  positionPopupEdit.value = positionProfile.textContent;
   openPopup(popupProfile);
 });
 
@@ -119,17 +119,6 @@ function changeProfile(nameValue, positionValue) {
 }
 
 profileForm.addEventListener('submit', function () {
-
-  getProfileInfo()
-    .then(checkResponse)
-    .then((res) => {
-      namePopupEdit.value = res.name;
-      positionPopupEdit.value = res.about;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
 
   renderLoading(true, profileForm);
 
