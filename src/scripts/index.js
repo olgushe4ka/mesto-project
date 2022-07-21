@@ -3,13 +3,24 @@ import { addCard } from './components/cards.js';
 import { linkInput, nameInput, gridCreateButton, profileSaveButton, avaSaveButton, cardsContainer } from './components/constants.js';
 import { closePopup, openPopup } from './components/modal.js';
 import { enableValidation } from './components/validate.js';
-import { getProfileInfo, patchAvatar, getCards, patchProfileInfo, postCards, checkResponse, getUserID } from './components/api.js';
+import { Api } from './components/api.js';
+import { Popup } from './components/popup.js';
 
 window.myOwnerId = undefined;
 
-Promise.all([getProfileInfo(), getCards()])
+export const api = new Api({
+  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-13',
+  headers: {
+    'authorization': 'cec4068b-d318-4572-975e-c977f41c2ea2',
+    'Content-Type': 'application/json'
+  }
+});
+
+
+
+Promise.all([api.getProfileInfo(), api.getCards()])
   .then(([profileInfoResponse, cardsResponse]) => {
-    return Promise.all([checkResponse(profileInfoResponse), checkResponse(cardsResponse)]);
+    return Promise.all([api.checkResponse(profileInfoResponse), api.checkResponse(cardsResponse)]);
   })
   .then(([profileInfo, cards]) => {
     myOwnerId = profileInfo._id;
@@ -90,8 +101,8 @@ cardForm.addEventListener('submit', function () {
 
   renderLoading(true, cardForm);
 
-  postCards(nameInput.value, linkInput.value)
-    .then(checkResponse)
+  api.postCards(nameInput.value, linkInput.value)
+    .then(api.checkResponse)
     .then(createdCard => {
       addCard(createdCard, cardsContainer, true);
       closePopup(popupEdit);
@@ -122,8 +133,8 @@ profileForm.addEventListener('submit', function () {
 
   renderLoading(true, profileForm);
 
-  patchProfileInfo(namePopupEdit.value, positionPopupEdit.value)
-    .then(checkResponse)
+  api.patchProfileInfo(namePopupEdit.value, positionPopupEdit.value)
+    .then(api.checkResponse)
     .then(() => {
       changeProfile(namePopupEdit.value, positionPopupEdit.value);
       closePopup(popupProfile);
@@ -145,7 +156,7 @@ avatarForm.addEventListener('submit', function () {
   renderLoading(true, avatarForm);
 
   changeAvatar(avatarFormInput.value);
-  patchAvatar(avatarFormInput.value)
+  api.patchAvatar(avatarFormInput.value)
     .then(() => { closePopup(popupAvatarEdit); })
     .catch((err) => {
       console.log(err);

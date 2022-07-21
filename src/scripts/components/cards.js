@@ -3,13 +3,15 @@
 import { openPopup } from '../components/modal.js';
 import { photoGridTemplate, photoPopup, popupPhotoInput, popupTitleInput } from '../components/constants.js';
 import { deleteCard, deleteLike, putLike, checkResponse } from './api.js';
+import { api } from '../index.js';
+
 
 function like(evt, cardId) {
   const toogleLikePromise = evt.target.classList.contains('photo-grid__heart_black') ?
-    deleteLike(cardId) :
-    putLike(cardId);
+    api.deleteLike(cardId) :
+    api.putLike(cardId);
   toogleLikePromise
-    .then(checkResponse)
+    .then(api.checkResponse)
     .then(card => {
       evt.target.parentElement.querySelector('.photo-grid__counter').textContent = card.likes.length;
       evt.target.classList.toggle('photo-grid__heart_black')
@@ -46,8 +48,8 @@ export function renderCard(imageName, imageLink, imageLike, hideDeleteButton, im
     photoItem.querySelector('.photo-grid__delite-button').remove();
   } else {
     photoItem.querySelector('.photo-grid__delite-button').addEventListener('click', (event) => {
-      deleteCard(imageId)
-        .then(checkResponse)
+      api.deleteCard(imageId)
+        .then(api.checkResponse)
         .then(removeParentItem(event))
         .catch((err) => {
           console.log(err)
