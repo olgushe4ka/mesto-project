@@ -15,7 +15,7 @@ export function closePopup(popupElement) {
   document.removeEventListener('keydown', closeByEsc);
 }
 
-//закрытие попапов при щелке Esc
+//закрытие попапов от Esc
 
 function closeByEsc(evt) {
   if (evt.key === ESC_CODE) {

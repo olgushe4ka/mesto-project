@@ -1,5 +1,8 @@
 
 
+
+
+
 // export class Card {
 //   // static _template = document.querySelector('#todo-item-template').content
 
@@ -57,6 +60,14 @@
 //   }
 
 // }
+
+
+
+
+
+
+
+
 
 
 

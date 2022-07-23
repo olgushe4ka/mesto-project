@@ -1,31 +1,40 @@
-// export class Popup {
-//   constructor(popupSelector) {
-//       this._popup = document.querySelector(popupSelector);
-//   }
+export class Popup {
+  constructor(popup) {
+    this._popup = popup;
+    this._closebyEsc = this._closebyEsc.bind(this);
+  }
 
-//   _hadldeEscUp = (evt) => {
-//       if(evt.key === 'Escape'){
-//           this.close();
-//       }
-//   }
+  _closebyEsc(evt) {
+    if (evt.key === 'Escape') {
+      this.close();
+    }
+  }
 
-//   open(){
-//       this._popup.classList.add('popup_opened');
-//       document.addEventListener('keyup', this._hadldeEscUp)
-//   }
+  // _hadldeEscUp = (evt) => {
+  //   if (evt.key === 'Escape') {
+  //     this.close();
+  //   }
+  // }
 
-//   close(){
-//       this._popup.classList.remove('popup_opened');
-//       document.removeEventListener('keyup', this._hadldeEscUp)
-//   }
+  open() {
+    this._popup.classList.add('popup_opened');
+    document.addEventListener('keyup', this._closebyEsc)
+  }
 
-//   setEventListener(){
-//       console.log(this);
-//       this._popup.addEventListener('mousedown', (evt) => {
-//           if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')){
-//               this.close();
-//           }
-//       })
-//   }
+  close() {
+    this._popup.classList.remove('popup_opened');
+    document.removeEventListener('keyup', this._closebyEsc)
+  }
 
-// }
+  setEventListener() {
+    this._popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+        this.close();
+      }
+      if (evt.target.classList.contains('popup__close-icon')) {
+        this.close();
+      }
+    })
+  }
+
+}
