@@ -4,6 +4,7 @@ import { openPopup } from '../components/modal.js';
 import { photoGridTemplate, photoPopup, popupPhotoInput, popupTitleInput } from '../components/constants.js';
 import { deleteCard, deleteLike, putLike, checkResponse } from './api.js';
 import { api } from '../index.js';
+import { PopupWithImage } from './PopupWithImage.js';
 
 
 function like(evt, cardId) {

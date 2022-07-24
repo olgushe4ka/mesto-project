@@ -1,22 +1,21 @@
-// import { Popup } from "./popup.js"
+import { Popup } from "./popup.js"
 
 
-// export class PopupWithImage extends Popup {
-//   constructor(popupSelector) {
-//     super(popupSelector)
-//   }
+export class PopupWithImage extends Popup {
+  constructor(popupSelector) {
+    super(popupSelector)
+  }
 
-//   open({popupPhotoInput, popupTitleInput, imageLink, imageName }) {
+  open({popupPhotoInput, popupTitleInput, imageLink, imageName }) {
 
-//     popupPhotoInput.src = imageLink;
-//     popupTitleInput.textContent = imageName;
-//     popupPhotoInput.alt = imageName;
+    popupPhotoInput.src = imageLink;
+    popupTitleInput.textContent = imageName;
+    popupPhotoInput.alt = imageName;
 
-//     super.open()
-//   }
+    super.open()
+  }
 
-
-// }
+}
 
 
 

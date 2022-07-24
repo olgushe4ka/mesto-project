@@ -1,29 +1,23 @@
 export class Popup {
   constructor(popup) {
     this._popup = popup;
-    this._closebyEsc = this._closebyEsc.bind(this);
   }
 
-  _closebyEsc(evt) {
+
+  _hadldeEscUp = (evt) => {
     if (evt.key === 'Escape') {
       this.close();
     }
   }
 
-  // _hadldeEscUp = (evt) => {
-  //   if (evt.key === 'Escape') {
-  //     this.close();
-  //   }
-  // }
-
   open() {
     this._popup.classList.add('popup_opened');
-    document.addEventListener('keyup', this._closebyEsc)
+    document.addEventListener('keyup', this._hadldeEscUp)
   }
 
   close() {
     this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keyup', this._closebyEsc)
+    document.removeEventListener('keyup', this._hadldeEscUp)
   }
 
   setEventListener() {
