@@ -1,3 +1,53 @@
+import { PopupWithImage } from "./PopupWithImage";
+
+export class Card {
+  //static _template = document.querySelector("#photo-grid").content;
+
+  constructor({ data, delClickHandler }, cardSelector) {
+    this._data = data;
+    this._template = document.querySelector(cardSelector).content;
+    this._delClickHandler = delClickHandler;
+  }
+
+  _renderCard(imageName, imageLink, imageLike) {
+    this.photoItem = this._template
+      .querySelector(".photo-grid__item")
+      .cloneNode(true);
+    const photoElement = this.photoItem.querySelector(".photo-grid__photo");
+    const buttonDelete = this.photoItem.querySelector(".photo-grid__delite-button");
+    const buttonLike = this.photoItem.querySelector(".photo-grid__heart");
+
+    this.photoItem.querySelector(".photo-grid__photo").src = imageLink;
+    this.photoItem.querySelector(".photo-grid__name").textContent = imageName; // this._data.name;
+    this.photoItem.querySelector(".photo-grid__counter").textContent = imageLike.length;
+    this.photoItem.querySelector(".photo-grid__photo").alt = imageName;
+
+    buttonDelete.addEventListener("click", (evt) => {
+      this._handleDeleteIconClick();
+    });
+
+    photoElement.addEventListener("click", (evt) => {
+      this._handleCardClick();
+    });
+
+    buttonLike.addEventListener("click", (evt) => {
+      this._handleLikeClick();
+    });
+
+    return this.photoItem;
+  }
+
+  _handleCardClick = () => {
+  };
+
+  _handleLikeClick = () => {
+    // ...что должно произойти при клике на лайк
+  };
+
+  _handleDeleteIconClick = () => {
+    this.photoItem.remove();
+  };
+}
 
 
 
@@ -14,8 +64,6 @@
 //       this._editClickHeandler = editClickHeandler;
 //   }
 
-
-
 //   createTodo(){
 //       this.view = this._template.querySelector('.todo-item').cloneNode(true);
 //       this.todoTaskText = this.view.querySelector('.todo-item__text');
@@ -24,7 +72,6 @@
 //       const editedTaskButton = this.view.querySelector('.todo-item__edit');
 
 //       this.todoTaskText.textContent = this._data.name;
-
 
 //       deletedTaskButton.addEventListener('click', (e) => {
 //           this._delClickHandler(this);//не забыть передать аргументы
@@ -40,7 +87,6 @@
 
 //       return this.view;
 //   }
-
 
 //   getId(){
 //       return this._data._id;
@@ -61,16 +107,6 @@
 
 // }
 
-
-
-
-
-
-
-
-
-
-
 // // export class Card {
 // //   constructor(data) {
 // //     this._data = data; // ...данные карточки (включая информацию по лайкам)
@@ -87,7 +123,6 @@
 // //     //...что должно произойти при клике на удаление
 // //   }
 // // }
-
 
 // // import { popupImage, popupElement, popupCloseButton } from '../utils/constants.js';
 
