@@ -7,9 +7,17 @@ export class Card {
     this._data = data;
     this._template = document.querySelector(cardSelector).content;
     this._delClickHandler = delClickHandler;
+
+    this._likes = data.likes;
+    this._link = data.link;
+    this._name = data.name;
+    this._ownerId = data.owner._id;
   }
 
-  _renderCard(imageName, imageLink, imageLike) {
+
+
+
+  renderCard(imageName, imageLink, imageLike) {
     this.photoItem = this._template
       .querySelector(".photo-grid__item")
       .cloneNode(true);
@@ -27,7 +35,7 @@ export class Card {
     });
 
     photoElement.addEventListener("click", (evt) => {
-      this._handleCardClick();
+      this._handleCardClick(this._name, this._link);
     });
 
     buttonLike.addEventListener("click", (evt) => {
@@ -46,6 +54,7 @@ export class Card {
 
   _handleDeleteIconClick = () => {
     this.photoItem.remove();
+    this.photoItem = null;
   };
 }
 

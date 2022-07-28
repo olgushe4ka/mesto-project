@@ -1,5 +1,5 @@
 import "../pages/index.css";
-import { addCard } from "./components/cards.js";
+import { addCard, renderCard } from "./components/cards.js";
 import {
   linkInput,
   nameInput,
@@ -64,7 +64,9 @@ const cards = new Section(
       );
     },
     renderer: () => {
-      addCard();
+      console.log(card.renderCard());
+      card.renderCard();
+      //addCard();
     },
   },
   ".photo-grid"
@@ -129,9 +131,39 @@ Promise.all([api.getProfileInfo(), api.getCards()])
     userInfo.setUserInfo(profileInfo.name, profileInfo.about);
     userInfo.updateUserInfo();
 
-    cards.forEach((item) => {
-      addCard(item, cardsContainer);
-    });
+
+    const renderedcards = new Section(
+      {
+        items: cards,
+           renderer: (item) => {
+
+          const card1 = new Card(
+            {
+              data: () => {},
+            },
+            "#photo-grid"
+          );
+
+          console.log(card1);
+          card1.renderCard(item, cardsContainer);
+          //addCard();
+        },
+      },
+      ".photo-grid"
+    );
+
+    renderedcards.renderItems();
+    renderedcards.addItem();
+
+
+
+
+    // cards.forEach((item) => {
+    //   addCard(item, cardsContainer);
+    // });
+
+
+
   })
   .catch((err) => {
     console.log(err);
@@ -226,6 +258,10 @@ const validator = new FormValidator({
 });
 
 validator.enableValidation();
+
+
+
+
 
 // Функция показа Рендера
 // function renderLoading(isLoading, place) {
