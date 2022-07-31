@@ -1,26 +1,13 @@
-// import { api } from "../index.js";
-// import { Popup } from "./popup.js"
-
-
-// export class PopupWithImage extends Popup {
-//   constructor(popupSelector){
-//       super(popupSelector)
-//   }
-
-//   open({name}){
-//       console.log('Тут логика открытия картинки', name);
-//       super.open()
-//   }
-
-// }
-
-
-
-// photoElement.addEventListener('click', function () {
-
-//   popupPhotoInput.src = imageLink;
-//   popupTitleInput.textContent = imageName;
-//   popupPhotoInput.alt = imageName;
-
-//   openPopup(photoPopup);
-// })
+import { Popup } from "./Popup";
+export  class PopupWithImage extends Popup {
+    constructor (popup) {
+        super(popup);
+        this._image = this._popup.querySelector('.popup-photo__photo');
+        this._signature = this._popup.querySelector('.popup-photo__title');
+    }
+open(name, link) {
+    this._image.src = link;
+    this._signature.textContent = name;
+    super.open();
+}
+}

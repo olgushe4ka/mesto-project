@@ -12,177 +12,65 @@ export class Api {
 
   getUserID() {
     return fetch(`${this._config.baseUrl}/users/me/_id`, {
-      headers: this._config.headers
-    })
+      headers: this._config.headers,
+    }).then(this.checkResponse);
   }
 
   getProfileInfo = () => {
     return fetch(`${this._config.baseUrl}/users/me`, {
-      headers: this._config.headers
-    })
-  }
+      headers: this._config.headers,
+    }).then(this.checkResponse);
+  };
 
   getCards = () => {
     return fetch(`${this._config.baseUrl}/cards`, {
-      headers: this._config.headers
-    })
-  }
-
-  patchProfileInfo = (name, about) => {
-    return fetch(`${this._config.baseUrl}/users/me`, {
-      method: 'PATCH',
       headers: this._config.headers,
-      body: JSON.stringify({
-        name: name,
-        about: about
-      })
-    });
-  }
+    }).then(this.checkResponse);
+  };
+
+  patchProfileInfo = (dataProfile) => {
+    return fetch(`${this._config.baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._config.headers,
+      body: JSON.stringify(dataProfile),
+    }).then(this.checkResponse);
+  };
 
   patchAvatar(avatar) {
     return fetch(`${this._config.baseUrl}/users/me/avatar`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: this._config.headers,
-      body: JSON.stringify({
-        avatar: avatar
-      })
-    });
+      body: JSON.stringify(avatar)
+    }).then(this.checkResponse);
   }
 
-  postCards(name, link) {
+
+  postCards(data) {
     return fetch(`${this._config.baseUrl}/cards`, {
-      method: 'POST',
+      method: "POST",
       headers: this._config.headers,
-      body: JSON.stringify({
-        name: name,
-        link: link
-      })
-    });
+      body: JSON.stringify(data),
+    }).then(this.checkResponse);
   }
 
   deleteCard(cardId) {
     return fetch(`${this._config.baseUrl}/cards/${cardId}`, {
-      method: 'DELETE',
-      headers: this._config.headers
-    });
+      method: "DELETE",
+      headers: this._config.headers,
+    }).then(this.checkResponse);
   }
 
   putLike(cardId) {
     return fetch(`${this._config.baseUrl}/cards/likes/${cardId}`, {
-      method: 'PUT',
-      headers: this._config.headers
-    });
+      method: "PUT",
+      headers: this._config.headers,
+    }).then(this.checkResponse);
   }
 
   deleteLike(cardId) {
     return fetch(`${this._config.baseUrl}/cards/likes/${cardId}`, {
-      method: 'DELETE',
-      headers: this._config.headers
-    });
+      method: "DELETE",
+      headers: this._config.headers,
+    }).then(this.checkResponse);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Без ООП
-
-// const this.config = {
-//   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-13',
-//   headers: {
-//     'authorization': 'cec4068b-d318-4572-975e-c977f41c2ea2',
-//     'Content-Type': 'application/json',
-//   },
-// };
-
-
-// export function checkResponse(res) {
-//   if (res.ok) {
-//     return res.json();
-//   }
-//   return Promise.reject(`Ошибка: ${res.status}`);
-// }
-
-
-// export function getUserID() {
-//   return fetch(`${this.config.baseUrl}/users/me/_id`, {
-//     headers: this.config.headers
-//   })
-// }
-
-// export const getProfileInfo = () => {
-//   return fetch(`${this.config.baseUrl}/users/me`, {
-//     headers: this.config.headers
-//   })
-// }
-
-
-// export const getCards = () => {
-//   return fetch(`${this.config.baseUrl}/cards`, {
-//     headers: this.config.headers
-//   })
-// }
-
-// export const patchProfileInfo = (name, about) => {
-//   return fetch(`${this.config.baseUrl}/users/me`, {
-//     method: 'PATCH',
-//     headers: this.config.headers,
-//     body: JSON.stringify({
-//       name: name,
-//       about: about
-//     })
-//   });
-// }
-
-// export function patchAvatar(avatar) {
-//   return fetch(`${this.config.baseUrl}/users/me/avatar`, {
-//     method: 'PATCH',
-//     headers: this.config.headers,
-//     body: JSON.stringify({
-//     avatar: avatar
-//     })
-//   });
-// }
-
-
-// export function postCards(name, link) {
-//   return fetch(`${this.config.baseUrl}/cards`, {
-//     method: 'POST',
-//     headers: this.config.headers,
-//     body: JSON.stringify({
-//       name: name,
-//       link: link
-//     })
-//   });
-// }
-
-
-// export function deleteCard(cardId) {
-//   return fetch(`${this.config.baseUrl}/cards/${cardId}`, {
-//     method: 'DELETE',
-//     headers: this.config.headers
-//   });
-// }
-
-// export function putLike(cardId) {
-//   return fetch(`${this.config.baseUrl}/cards/likes/${cardId}`, {
-//     method: 'PUT',
-//     headers: this.config.headers
-//   });
-// }
-
-// export function deleteLike(cardId) {
-//   return fetch(`${this.config.baseUrl}/cards/likes/${cardId}`, {
-//     method: 'DELETE',
-//     headers: this.config.headers
-//   });
-// }

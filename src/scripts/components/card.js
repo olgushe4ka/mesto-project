@@ -1,117 +1,81 @@
+export default class Card {
+  constructor(
+    data,
+    cardSelector,
+    handleCardClick,
+    userId,
+    { handleDeleteClick, addLike, removeLike }
+  ) {
+    this._likes = data.likes;
+    this._link = data.link;
+    this._name = data.name;
+    this._ownerId = data.owner._id;
+    this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
+    this._userId = userId;
+    this._addLike = addLike;
+    this._removeLike = removeLike;
+    this._handleDeleteClick = handleDeleteClick;
+  }
+  _setEventListeners() {
+    this._photo.addEventListener("click", () =>
+      this._handleCardClick(this._name, this._link)
+    );
+    this._buttonLike.addEventListener("click", () => this._checkLike());
+    this._element
+      .querySelector(".photo-grid__delite-button")
+      .addEventListener("click", () => {
+        this._handleDeleteClick();
+      });
+  }
+  _getElement() {
 
+    const elementsCard = document
+      .querySelector(this._cardSelector)
+      .content.cloneNode(true);
 
-// export class Card {
-//   // static _template = document.querySelector('#todo-item-template').content
+    return elementsCard;
 
-//   constructor({data, delClickHandler, copyClickHandler, editClickHeandler}, todoSelector){
-//       this._data = data;
-//       this._template = document.querySelector(todoSelector).content
-//       this._delClickHandler = delClickHandler;
-//       this._copyClickHandler = copyClickHandler;
-//       this._editClickHeandler = editClickHeandler;
-//   }
+  }
 
+  generate() {
+    this._element = this._getElement();
+    this._element.querySelector(".photo-grid__name").textContent = this._name;
+    this._buttonLike = this._element.querySelector(".photo-grid__heart");
+    this._countLike = this._element.querySelector(".photo-grid__counter");
+    this._photo = this._element.querySelector(".photo-grid__photo");
+    this._deleteButton = this._element.querySelector(".photo-grid__delite-button");
+    this._photo.alt = this._name;
+    this._photo.src = this._link;
+    this._countLike.textContent = this._likes.length;
+    this._setEventListeners();
+    this._element_place = this._element.querySelector(".photo-grid__item");
 
+    if (this._userId !== this._ownerId) {
+      this._deleteButton.remove();
+    }
+    this._likes.forEach((like) => {
+      if (like._id === this._userId) {
+        this._buttonLike.classList.add("photo-grid__heart_black");
+      }
+    });
+    return this._element;
+  }
+  deleteCard() {
 
-//   createTodo(){
-//       this.view = this._template.querySelector('.todo-item').cloneNode(true);
-//       this.todoTaskText = this.view.querySelector('.todo-item__text');
-//       const deletedTaskButton = this.view.querySelector('.todo-item__del');
-//       const clonedTaskButton = this.view.querySelector('.todo-item__copy');
-//       const editedTaskButton = this.view.querySelector('.todo-item__edit');
-
-//       this.todoTaskText.textContent = this._data.name;
-
-
-//       deletedTaskButton.addEventListener('click', (e) => {
-//           this._delClickHandler(this);//не забыть передать аргументы
-//       })
-
-//       clonedTaskButton.addEventListener('click', (e) => {
-//          this._copyClickHandler(this);
-//       })
-
-//       editedTaskButton.addEventListener('click', (event) => {
-//           this._editClickHeandler(event, this)
-//       })
-
-//       return this.view;
-//   }
-
-
-//   getId(){
-//       return this._data._id;
-//   }
-
-//   getData() {
-//       return this._data;
-//   }
-
-//   setData(newData) {
-//       this._data = newData;
-//   }
-
-//   remove() {
-//       this.view.remove();
-//       this.view = null;
-//   }
-
-// }
-
-
-
-// // export class Card {
-// //   constructor(data) {
-// //     this._data = data; // ...данные карточки (включая информацию по лайкам)
-// //   }
-
-// //   handleCardClick = () => { //...что должно произойти при клике на картинку
-// //   }
-
-// //   handleLikeClick = (card) => {
-// //     // ...что должно произойти при клике на лайк
-// //   }
-
-// //   handleDeleteIconClick = (card) => {
-// //     //...что должно произойти при клике на удаление
-// //   }
-// // }
-
-
-// // import { popupImage, popupElement, popupCloseButton } from '../utils/constants.js';
-
-// // export default class Card {
-// //   constructor(selector) {
-// //     this._selector = selector;
-// //   }
-
-// //   _getElement() {
-// //     const cardElement = document
-// //       .querySelector(this._selector)
-// //       .content
-// //       .querySelector('.card')
-// //       .cloneNode(true);
-
-// //     return cardElement;
-// //   }
-
-// //   _handleOpenPopup() {
-// //     popupImage.src = this._image;
-// //     popupElement.classList.add('popup_is-opened');
-// //   }
-
-// //   _handleClosePopup() {
-// //     popupImage.src = '';
-// //     popupElement.classList.remove('popup_is-opened');
-// //   }
-
-// //   _setEventListeners() {
-// //     this._element.addEventListener('click', () => {
-// //       this._handleOpenPopup();
-// //     });
-
-// //     popupCloseButton.addEventListener('click', () => {
-// //       this._handleClosePopup();
-// //     });
-// //   }
-// // }
+    this._element_place.remove();
+    this._element_place = null;
+  };
+  _checkLike() {
+    if (this._buttonLike.classList.contains("photo-grid__heart_black")) {
+      this._buttonLike.classList.remove("photo-grid__heart_black");
+      this._removeLike();
+    } else {
+      this._buttonLike.classList.add("photo-grid__heart_black");
+      this._addLike();
+    }
+  }
+  refreshCount(data) {
+    this._countLike.textContent = data.likes.length;
+  }
+}
