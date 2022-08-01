@@ -43,6 +43,7 @@ const userInfo = new UserInfo(nameProfile, positionProfile, avatarImage);
 //Попап профайла
 const popupWithFormProfile = new PopupWithForm(popupProfile, {
   formData: (data) => {
+    popupWithFormProfile.renderLoading(true);
     api
       .patchProfileInfo(data)
       .then((res) => {
@@ -52,7 +53,7 @@ const popupWithFormProfile = new PopupWithForm(popupProfile, {
       .finally(() => {
         popupWithFormProfile.renderLoading(false);
       });
-    popupWithFormProfile.renderLoading(true);
+ 
   },
 });
 
@@ -69,6 +70,7 @@ buttonEditProfile.addEventListener("click", () => {
 //Попап аватара
 const popupWithFormAvatar = new PopupWithForm(popupAvatarEdit, {
   formData: (data) => {
+    popupWithFormProfile.renderLoading(true);
     api
       .patchAvatar(data)
       .then(() => {
@@ -80,7 +82,6 @@ const popupWithFormAvatar = new PopupWithForm(popupAvatarEdit, {
       .finally(() => {
         popupWithFormAvatar.renderLoading(false);
       });
-    popupWithFormAvatar.renderLoading(true);
   },
 });
 
@@ -132,6 +133,7 @@ function createCard(data) {
     handleDeleteClick: () => {
       popupDelete.open();
       popupDelete.confinumDelete(() => {
+        popupDelete.renderDeleting(true);
         api
           .deleteCard(data._id)
           .then(() => {
@@ -144,7 +146,7 @@ function createCard(data) {
           .finally(() => {
             popupDelete.renderDeleting(false);
           });
-        popupDelete.renderDeleting(true);
+          
       });
     },
     addLike: () => {
