@@ -197,11 +197,11 @@ function handleCardClick(name, link) {
 }
 
 // Валидация форм
-const validatorProfile = new FormValidator(validatorConfig, ".profile-form");
+const validatorProfile = new FormValidator(validatorConfig, popupWithFormProfile.form);
 validatorProfile.enableValidation();
 
-const validatorCard = new FormValidator(validatorConfig, ".card-form");
+const validatorCard = new FormValidator(validatorConfig, popupWithFormCard.form);
 validatorCard.enableValidation();
 
-const validatorAvatar = new FormValidator(validatorConfig, ".avatar-form");
+const validatorAvatar = new FormValidator(validatorConfig, popupWithFormAvatar.form);
 validatorAvatar.enableValidation();
