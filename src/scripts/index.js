@@ -153,7 +153,8 @@ function createCard(data) {
       api
         .putLike(data._id)
         .then((data) => {
-          card.refreshCount(data);
+          /* card.setkLike(); */
+          card.handleLikeCard(data);
         })
         .catch((err) => {
           console.log(err);
@@ -164,7 +165,8 @@ function createCard(data) {
       api
         .deleteLike(data._id)
         .then((data) => {
-          card.refreshCount(data);
+         /*  card.setkLike(); */
+          card.handleLikeCard(data);
         })
         .catch((err) => {
           console.log(err);

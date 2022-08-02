@@ -68,14 +68,13 @@ export default class Card {
   };
   _checkLike() {
     if (this._buttonLike.classList.contains("photo-grid__heart_black")) {
-      this._buttonLike.classList.remove("photo-grid__heart_black");
       this._removeLike();
     } else {
-      this._buttonLike.classList.add("photo-grid__heart_black");
       this._addLike();
     }
   }
-  refreshCount(data) {
+handleLikeCard(data) {
     this._countLike.textContent = data.likes.length;
+    this._buttonLike.classList.toggle("photo-grid__heart_black");
   }
 }
