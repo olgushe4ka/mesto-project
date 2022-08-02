@@ -1,6 +1,21 @@
 import "../pages/index.css";
-import { cardsContainer, validatorConfig, popupSubmitDelete, buttonEditProfile, popupProfile, popupEdit, buttonAddCard, namePopupEdit, positionPopupEdit,
-  positionProfile, nameProfile, photoPopup, buttonOpenAvatarEdit, popupAvatarEdit, avatarImage } from "./components/constants.js";
+import {
+  cardsContainer,
+  validatorConfig,
+  popupSubmitDelete,
+  buttonEditProfile,
+  popupProfile,
+  popupEdit,
+  buttonAddCard,
+  namePopupEdit,
+  positionPopupEdit,
+  positionProfile,
+  nameProfile,
+  photoPopup,
+  buttonOpenAvatarEdit,
+  popupAvatarEdit,
+  avatarImage,
+} from "./components/constants.js";
 import { Api } from "./components/api.js";
 import { Section } from "./components/Section";
 import { PopupWithForm } from "./components/PopupWithForm";
@@ -11,7 +26,6 @@ import Card from "./components/card";
 import { PopupWithImage } from "./components/PopupWithImage";
 
 window.myOwnerId = undefined;
-
 
 // Создание класса Api
 export const api = new Api({
@@ -36,7 +50,7 @@ Promise.all([api.getProfileInfo(), api.getCards()])
     console.log(err);
   });
 
-  // Создание класса UserInfo
+// Создание класса UserInfo
 const userInfo = new UserInfo(nameProfile, positionProfile, avatarImage);
 
 // Открытие и закрытие форм - ООП
@@ -53,7 +67,6 @@ const popupWithFormProfile = new PopupWithForm(popupProfile, {
       .finally(() => {
         popupWithFormProfile.renderLoading(false);
       });
- 
   },
 });
 
@@ -75,6 +88,7 @@ const popupWithFormAvatar = new PopupWithForm(popupAvatarEdit, {
       .patchAvatar(data)
       .then(() => {
         userInfo.setAvatar(data);
+        popupWithFormAvatar.close()
       })
       .catch((err) => {
         console.log(err);
@@ -117,7 +131,6 @@ buttonAddCard.addEventListener("click", () => {
   popupWithFormCard.open();
 });
 
-
 //  Добавление фото
 const sectionCard = new Section(
   {
@@ -146,14 +159,12 @@ function createCard(data) {
           .finally(() => {
             popupDelete.renderDeleting(false);
           });
-          
       });
     },
     addLike: () => {
       api
         .putLike(data._id)
         .then((data) => {
-          /* card.setkLike(); */
           card.handleLikeCard(data);
         })
         .catch((err) => {
@@ -165,7 +176,6 @@ function createCard(data) {
       api
         .deleteLike(data._id)
         .then((data) => {
-         /*  card.setkLike(); */
           card.handleLikeCard(data);
         })
         .catch((err) => {
@@ -186,7 +196,6 @@ function handleCardClick(name, link) {
   popupZoomPhoto.setEventListener();
 }
 
-
 // Валидация форм
 const validatorProfile = new FormValidator(validatorConfig, ".profile-form");
 validatorProfile.enableValidation();
@@ -196,6 +205,3 @@ validatorCard.enableValidation();
 
 const validatorAvatar = new FormValidator(validatorConfig, ".avatar-form");
 validatorAvatar.enableValidation();
-
-
-
