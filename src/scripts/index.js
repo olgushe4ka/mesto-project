@@ -108,6 +108,7 @@ buttonOpenAvatarEdit.addEventListener("click", () => {
 //Попап фотографий
 const popupWithFormCard = new PopupWithForm(popupEdit, {
   formData: (data) => {
+    popupWithFormCard.renderLoading(true);
     api
       .postCards(data)
       .then((res) => {
@@ -121,7 +122,6 @@ const popupWithFormCard = new PopupWithForm(popupEdit, {
       .finally(() => {
         popupWithFormCard.renderLoading(false);
       });
-    popupWithFormCard.renderLoading(true);
   },
 });
 
