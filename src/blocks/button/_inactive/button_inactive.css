@@ -4,4 +4,5 @@
   color: grey;
   cursor: not-allowed;
   pointer-events: none;
+  background-color: white;
 }
