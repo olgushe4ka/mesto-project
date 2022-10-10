@@ -33,14 +33,14 @@
   <div class="popup popup-profile">
     <div class="popup__container">
       <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="form edit-form profile-form" novalidate>
+      <form class="form profile-form" novalidate>
         <fieldset class="form__set">
           <h2 class="edit-form__title">Редактировать профиль</h2>
           <input id="name-input" type="text" class="form__input edit-form__field edit-form__field_name" name="name"
             placeholder="Имя" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
           <span class="form__input-error name-input-error"></span>
           <input id="position-input" type="text" class="form__input edit-form__field edit-form__field_position"
-            name="position" placeholder="Должность" value="Исследователь океана" maxlength="200" minlength="2" required>
+            name="about" placeholder="Должность" value="Исследователь океана" maxlength="200" minlength="2" required>
           <span class="form__input-error position-input-error"></span>
           <button class="form__submit edit-form__button edit-form__save-button" type="submit">Сохранить</button>
         </fieldset>
@@ -50,10 +50,10 @@
   <div class="popup popup-edit">
     <div class="popup__container">
       <button class="popup__close-icon edit-popup__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="form edit-form card-form" novalidate>
+      <form class="form card-form" novalidate>
         <fieldset class="form__set">
           <h2 class="edit-form__title">Новое место</h2>
-          <input id="title-input" type="text" class="form__input edit-form__field edit-form__field_title" name="title"
+          <input id="title-input" type="text" class="form__input edit-form__field edit-form__field_title" name="name"
             placeholder="Название" maxlength="30" minlength="2" required>
           <span class="form__input-error title-input-error"></span>
           <input id="link-input" type="url" class="form__input edit-form__field edit-form__field_link" name="link"
@@ -75,10 +75,10 @@
   <div class="popup popup-avatar-edit">
     <div class="popup__container">
       <button class="popup__close-icon popup__close-icon-ava" type="button" aria-label="закрыть"></button>
-      <form class="form edit-form profile-form avatar-form" novalidate>
+      <form class="form avatar-form" novalidate>
         <fieldset class="form__set">
           <h2 class="edit-form__title">Обновить аватар</h2>
-          <input id="link-input" type="url" class="form__input edit-form__field edit-form__field_link avatar-form__field_link" name="link"
+          <input id="link-input" type="url" class="form__input edit-form__field edit-form__field_link avatar-form__field_link" name="avatar"
             placeholder="Ссылка на картинку" required>
           <span class="form__input-error link-input-error"></span>
           <button class="form__submit edit-form__button edit-form__save-button-ava" type="submit">Сохранить</button>
@@ -86,6 +86,18 @@
       </form>
     </div>
   </div>
+
+
+  <div class="popup popup_js-remove">
+    <div class="popup__container">
+      <button class="popup__close-icon popup__close-icon-ava" type="button" aria-label="закрыть"></button>
+      <form class="form edit-form profile-form avatar-form" novalidate>
+           <h2 class="edit-form__title">Вы уверены?</h2>
+                <button class="form__submit edit-form__button edit-form__save-button-ava popup__button-remove_js-profile" type="submit">Удалить</button>
+      </form>
+    </div>
+  </div>
+
   <template id="photo-grid">
     <div class="photo-grid__item">
       <button class="photo-grid__delite-button" type="button" aria-label="мусорное ведро"></button>
